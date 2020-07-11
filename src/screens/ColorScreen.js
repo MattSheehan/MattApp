@@ -17,22 +17,24 @@ const ColorScreen = ({navigation, route}) => {
   const [blue, setBlue] = useState(0);
   const [green, setGreen] = useState(0);
 
-  console.log(red);
   return (
     <View style={styles.container}>
       <View style={styles.titlecontainer}>
         <Text style={styles.titlestyle}>Learn your RGBs!</Text>
       </View>
+      <Text style={styles.Redtitle}>Red</Text>
       <ColorGen
         onIncrease={() => setRed(red + COLOR_FACTOR)}
         onDecrease={() => setRed(red - COLOR_FACTOR)}
         color="Red"
       />
+      <Text style={styles.Greentitle}>Green</Text>
       <ColorGen
         onIncrease={() => setGreen(green + COLOR_FACTOR)}
         onDecrease={() => setGreen(green - COLOR_FACTOR)}
         color="Green"
       />
+      <Text style={styles.Bluetitle}>Blue</Text>
       <ColorGen
         onIncrease={() => setBlue(blue + COLOR_FACTOR)}
         onDecrease={() => setBlue(blue - COLOR_FACTOR)}
@@ -65,6 +67,27 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     textAlign: 'center',
   },
+  Redtitle: {
+    fontSize: 30,
+    padding: 10,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    color: 'rgb(250, 30, 30)',
+  },
+  Greentitle: {
+    fontSize: 30,
+    padding: 10,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    color: 'rgb(30, 250, 30)',
+  },
+  Bluetitle: {
+    fontSize: 30,
+    padding: 10,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    color: 'rgb(30, 30, 250)',
+  },
   titlecontainer: {
     borderBottomColor: 'rgb(55,135,255)',
     borderTopColor: 'rgb(55,55,55)',
@@ -80,7 +103,7 @@ const styles = StyleSheet.create({
   },
   colordisplay: {
     fontSize: 20,
-    color: 'rgb(200,200,200)',
+    color: 'rgb(205,205,205)',
   },
 });
 

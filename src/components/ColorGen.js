@@ -6,7 +6,6 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 const ColorGen = ({color, onIncrease, onDecrease}) => {
   return (
     <View>
-      <Text style={styles.titlestyle}>{color}</Text>
       <TouchableOpacity style={styles.buttonstyle} onPress={onIncrease}>
         <Text style={styles.buttontext}>Increase {color}</Text>
       </TouchableOpacity>

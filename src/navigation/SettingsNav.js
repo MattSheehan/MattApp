@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {Button, Text, View, TextInput, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import ProfileScreen from '../screens/Profile';
-import SettingsScreen from '../screens/Settings';
+import ProfileScreen from '../screens/settings/Profile';
+import SettingsScreen from '../screens/settings/Settings';
 
 const SettingsStack = createStackNavigator();
 

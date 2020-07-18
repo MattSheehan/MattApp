@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {Button, Text, View, TextInput, StyleSheet} from 'react-native';
-import DrawerIcon from '../components/DrawerIcon';
+import {Button, Text, View, StyleSheet} from 'react-native';
 
 const SettingsScreen = ({navigation, route}) => {
   React.useEffect(() => {

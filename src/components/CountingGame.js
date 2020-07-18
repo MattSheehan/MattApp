@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const CountingGame = ({navigation, route}) => {
+const CountingGame = () => {
   const [counter, setCounter] = useState(0);
   return (
-    <View style={styles.countcontainer}>
+    <View style={styles.container}>
       <View style={styles.titlecontainer}>
         <Text style={styles.gametitle}>Counting Game!</Text>
       </View>
@@ -30,9 +36,20 @@ const CountingGame = ({navigation, route}) => {
 };
 
 const styles = StyleSheet.create({
-  countcontainer: {
-    flex: 1,
-    paddingTop: 69,
+  container: {
+    height: Dimensions.get('window').height - 75,
+    padding: 10,
+    borderTopLeftRadius: 7.5,
+    borderTopRightRadius: 7.5,
+    shadowColor: 'rgb(0, 0, 0)',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+    backgroundColor: 'rgb(55,55,55)',
   },
   gametitle: {
     fontSize: 30,

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../screens/HomeScreen';
-import DetailScreen from '../screens/DetailScreen';
 import HomeList from '../screens/HomeList';
 import ImageScreen from '../screens/ImageScreen';
 import ColorScreen from '../screens/ColorScreen';
 
 const Drawer = createDrawerNavigator();
 
-export default () => {
+const DrawerNav = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -23,11 +22,6 @@ export default () => {
         name="Home"
         component={HomeScreen}
         options={{title: 'Home'}}
-      />
-      <Drawer.Screen
-        name="DetailScreen"
-        component={DetailScreen}
-        options={{title: 'Make a Post!'}}
       />
       <Drawer.Screen
         name="HomeList"
@@ -47,3 +41,14 @@ export default () => {
     </Drawer.Navigator>
   );
 };
+
+export default DrawerNav;
+/* 
+
+  <Drawer.Screen
+    name="ColorReducerScreen"
+    component={ColorReducerScreen}
+    options={{title: 'Color Selector 1313'}}
+  />
+
+*/

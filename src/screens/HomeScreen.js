@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {Text, View, ScrollView, StyleSheet} from 'react-native';
+import React from 'react';
+import {Text, View, ScrollView, StyleSheet, Dimensions} from 'react-native';
 import DrawerIcon from '../components/DrawerIcon';
 import {createStackNavigator} from '@react-navigation/stack';
-import CountingGame from './CountingGame';
+import CountingGame from '../components/CountingGame';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = ({navigation, route}) => {
   navigation.setOptions({
@@ -16,23 +17,29 @@ const HomeScreen = ({navigation, route}) => {
     }
   }, [route.params?.post]);
   return (
-    <ScrollView style={styles.homestyle}>
-      <View>
-        <View style={styles.titlecontainer}>
-          <Text style={styles.titlestyle}>Posts</Text>
-        </View>
-        <Text style={styles.postmsgstyle}>(To make a post go to Details)</Text>
-        <Text style={styles.poststyle}>{route.params?.post}</Text>
-      </View>
-      <CountingGame />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        <SafeAreaView>
+          <CountingGame />
+        </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  homestyle: {
-    flex: 1,
-    backgroundColor: 'rgb(55, 55, 55)',
+  container: {
+    height: Dimensions.get('window').height - 75,
+    padding: 10,
+    shadowColor: 'rgb(0, 0, 0)',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+    backgroundColor: 'rgb(55,55,55)',
   },
   titlestyle: {
     fontSize: 30,

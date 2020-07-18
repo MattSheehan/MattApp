@@ -1,9 +1,16 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  FlatList,
+  ScrollView,
+} from 'react-native';
 import DrawerIcon from '../components/DrawerIcon';
 import HomeIcon from '../components/HomeIcon';
 import {createStackNavigator} from '@react-navigation/stack';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeList = ({navigation}) => {
   navigation.setOptions({
@@ -22,36 +29,64 @@ const HomeList = ({navigation}) => {
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titlecontainer}>
-        <Text style={styles.titlestyle}>Drivers</Text>
-      </View>
-      <View style={styles.listcontainer}>
-        <FlatList
-          keyExtractor={driver => driver.name}
-          data={driverNames}
-          renderItem={({item}) => {
-            return (
-              <Text style={styles.itemstyle}>
-                {item.name} - NOTE: {item.note}
-              </Text>
-            );
-          }}
-        />
-      </View>
-    </View>
+    <ImageBackground
+      source={require('../../images/Background_img.png')}
+      style={styles.backgroundimg}>
+      <ScrollView>
+        <SafeAreaView>
+          <View style={styles.titlecontainer}>
+            <Text style={styles.titlestyle}>Drivers</Text>
+          </View>
+          <View style={styles.listcontainer}>
+            <FlatList
+              keyExtractor={driver => driver.name}
+              data={driverNames}
+              renderItem={({item}) => {
+                return (
+                  <Text style={styles.itemstyle}>
+                    {item.name} - NOTE: {item.note}
+                  </Text>
+                );
+              }}
+            />
+          </View>
+          <View style={styles.titlecontainer}>
+            <Text style={styles.titlestyle}>Drivers...again</Text>
+          </View>
+          <View style={styles.listcontainer}>
+            <FlatList
+              keyExtractor={driver => driver.name}
+              data={driverNames}
+              renderItem={({item}) => {
+                return (
+                  <Text style={styles.itemstyle}>
+                    {item.name} - NOTE: {item.note}
+                  </Text>
+                );
+              }}
+            />
+          </View>
+          <View style={{height: 400}} />
+        </SafeAreaView>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundimg: {
     flex: 1,
-    backgroundColor: 'rgb(50,50,50)',
+    width: null,
+    height: null,
   },
   listcontainer: {
     borderColor: 'rgb(25,105,205)',
     borderStyle: 'solid',
     borderWidth: 2,
+    width: 350,
+    height: 400,
+    alignSelf: 'center',
+    backgroundColor: 'rgb(55,55,55)',
   },
   titlecontainer: {
     paddingTop: 5,
@@ -59,7 +94,7 @@ const styles = StyleSheet.create({
   },
   titlestyle: {
     fontSize: 50,
-    color: 'rgb(30, 135, 255)',
+    color: 'rgb(30, 35, 75)',
     fontStyle: 'italic',
     textAlign: 'center',
   },

@@ -12,9 +12,7 @@ const CountingGame = () => {
   const [counter, setCounter] = useState(0);
   return (
     <View style={styles.container}>
-      <View style={styles.titlecontainer}>
-        <Text style={styles.gametitle}>Counting Game!</Text>
-      </View>
+      <Text style={styles.gametitle}>Counting Game!</Text>
       <View style={styles.buttonstyle}>
         <TouchableOpacity
           onPress={() => {
@@ -37,11 +35,11 @@ const CountingGame = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height - 75,
+    height: 500,
     padding: 10,
     borderTopLeftRadius: 7.5,
     borderTopRightRadius: 7.5,
-    shadowColor: 'rgb(0, 0, 0)',
+    shadowColor: 'rgb(255,255,255)',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -49,12 +47,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5,
-    backgroundColor: 'rgb(55,55,55)',
+    width: 350,
+    backgroundColor: 'rgb(119,136,153)',
+    alignSelf: 'center',
   },
   gametitle: {
     fontSize: 30,
-    color: 'rgb(35, 145, 255)',
+    color: 'rgb(0,0,125)',
     fontStyle: 'italic',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   gamescoretitle: {
@@ -72,14 +73,6 @@ const styles = StyleSheet.create({
   buttonstyle: {
     paddingTop: 25,
     alignItems: 'center',
-  },
-  titlecontainer: {
-    borderBottomColor: 'rgb(55,135,255)',
-    borderTopColor: 'rgb(55,55,55)',
-    borderLeftColor: 'rgb(55,55,55)',
-    borderRightColor: 'rgb(55,55,55)',
-    borderStyle: 'solid',
-    borderWidth: 2,
   },
 });
 

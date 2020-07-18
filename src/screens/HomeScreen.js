@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, View, ScrollView, StyleSheet, Dimensions} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  Dimensions,
+  ImageBackground,
+} from 'react-native';
 import DrawerIcon from '../components/DrawerIcon';
 import {createStackNavigator} from '@react-navigation/stack';
 import CountingGame from '../components/CountingGame';
@@ -17,17 +24,24 @@ const HomeScreen = ({navigation, route}) => {
     }
   }, [route.params?.post]);
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../images/Background_img.png')}
+      style={styles.backgroundimg}>
       <ScrollView>
         <SafeAreaView>
           <CountingGame />
         </SafeAreaView>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundimg: {
+    flex: 1,
+    width: null,
+    height: null,
+  },
   container: {
     height: Dimensions.get('window').height - 75,
     padding: 10,
@@ -40,35 +54,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     backgroundColor: 'rgb(55,55,55)',
-  },
-  titlestyle: {
-    fontSize: 30,
-    color: 'rgb(35, 135, 255)',
-    fontStyle: 'italic',
-    textAlign: 'center',
-  },
-  postmsgstyle: {
-    textAlign: 'center',
-    color: 'rgb(205, 205, 205)',
-    fontSize: 12,
-    paddingBottom: 10,
-  },
-  poststyle: {
-    color: 'rgb(255, 255, 255)',
-    height: 100,
-    width: 400,
-    backgroundColor: 'rgb(100,100,100)',
-    borderColor: 'rgb(55,155,255)',
-    borderStyle: 'solid',
-    borderWidth: 2,
-  },
-  titlecontainer: {
-    borderBottomColor: 'rgb(55,135,255)',
-    borderTopColor: 'rgb(55,55,55)',
-    borderLeftColor: 'rgb(55,55,55)',
-    borderRightColor: 'rgb(55,55,55)',
-    borderStyle: 'solid',
-    borderWidth: 2,
   },
 });
 

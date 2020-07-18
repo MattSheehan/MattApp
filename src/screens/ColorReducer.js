@@ -1,6 +1,3 @@
-import React, {useReducer} from 'react';
-import {Text, View, StyleSheet, Dimensions} from 'react-native';
-
 /*
  ** Reducers **
  *  Argument #1: object that contains all of the states
@@ -9,10 +6,9 @@ import {Text, View, StyleSheet, Dimensions} from 'react-native';
  *  Rule #2: Always return a value to be used as Arg #1
  */
 
+import React, {useReducer} from 'react';
+import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import ColorGen from '../components/ColorGen';
-import DrawerIcon from '../components/DrawerIcon';
-import HomeIcon from '../components/HomeIcon';
-import {createStackNavigator} from '@react-navigation/stack';
 
 const COLOR_FACTOR = 5;
 
@@ -22,22 +18,31 @@ const reducer = (state, action) => {
   // action === { colorTBD: (red || green || blue), amount: COLOR_FACTOR || -1*COLOR_FACTOR }
   switch (action.colorTBD) {
     case 'red':
-      return {...state, red: state.red + action.amount};
+      return state.red + action.amount > 255 || state.red + action.amount < 0
+        ? state // return previous state NO update
+        : {...state, red: state.red + action.amount};
     case 'green':
-      return {...state, green: state.green + action.amount};
+      return state.green + action.amount > 255 ||
+        state.green + action.amount < 0
+        ? state // return previous state NO update
+        : {...state, green: state.green + action.amount};
     case 'blue':
-      return {...state, blue: state.blue + action.amount};
+      return state.blue + action.amount > 255 || state.blue + action.amount < 0
+        ? state // return previous state NO update
+        : {...state, blue: state.blue + action.amount};
     default:
       return state;
   }
 };
 
-const ColorReducer = ({navigation}) => {
+const ColorReducer = () => {
+  /*
   navigation.setOptions({
     title: 'Wheel of Colorrrr',
     headerLeft: () => <DrawerIcon navigation={navigation} />,
     headerRight: () => <HomeIcon navigation={navigation} />,
   });
+  */
   const [state, runColorReducer] = useReducer(reducer, {
     red: 0,
     green: 0,
@@ -47,9 +52,8 @@ const ColorReducer = ({navigation}) => {
   const {red, green, blue} = state;
   return (
     <View style={styles.container}>
-      <View style={styles.titlecontainer}>
-        <Text style={styles.titlestyle}>Learn your RGBs!</Text>
-      </View>
+      <Text style={styles.titlestyle}>Learn your RGBs...</Text>
+      <Text style={styles.titlestyle}>BUT WITH REDUCERS!</Text>
       <Text style={styles.Redtitle}>Red</Text>
       <ColorGen
         onIncrease={() =>
@@ -86,6 +90,8 @@ const ColorReducer = ({navigation}) => {
             height: 200,
             width: 200,
             backgroundColor: `rgb(${red},${green},${blue})`,
+            borderColor: 'rgb(255,255,255)',
+            borderWidth: 2,
           }}
         />
         <Text style={styles.colordisplay}>
@@ -110,10 +116,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5,
-    backgroundColor: 'rgb(55,55,55)',
+    width: 350,
+    backgroundColor: 'rgb(176,196,222)',
   },
   titlestyle: {
     fontSize: 30,
+    fontWeight: 'bold',
     color: 'rgb(35, 135, 255)',
     fontStyle: 'italic',
     textAlign: 'center',
@@ -139,14 +147,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'rgb(30, 30, 250)',
   },
-  titlecontainer: {
-    borderBottomColor: 'rgb(55,135,255)',
-    borderTopColor: 'rgb(55,55,55)',
-    borderLeftColor: 'rgb(55,55,55)',
-    borderRightColor: 'rgb(55,55,55)',
-    borderStyle: 'solid',
-    borderWidth: 2,
-  },
   colorbox: {
     alignItems: 'center',
     textAlign: 'center',
@@ -154,10 +154,13 @@ const styles = StyleSheet.create({
   },
   colordisplay: {
     fontSize: 20,
-    color: 'rgb(205,205,205)',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
   },
 });
 
+export default ColorReducer;
+/*
 const Stack = createStackNavigator();
 
 export default function() {
@@ -181,3 +184,4 @@ export default function() {
     </Stack.Navigator>
   );
 }
+*/

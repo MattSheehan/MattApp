@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import ImageDetail from '../components/ImageDetail';
 import DrawerIcon from '../components/DrawerIcon';
@@ -20,57 +21,67 @@ const ImageScreen = ({navigation}) => {
   });
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../images/Background_img.png')}
+      style={styles.backgroundimg}>
       <Text style={styles.titlestyle}>~ Select your vibe ~</Text>
       <ScrollView>
         <SafeAreaView>
-          <TouchableOpacity style={styles.touchme}>
-            <ImageDetail
-              imageSource={require('../../images/beach.jpg')}
-              title="Beach"
-              score={9}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.touchme}>
-            <ImageDetail
-              imageSource={require('../../images/forest.jpg')}
-              title="Prying Jungles"
-              score={7}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.touchme}>
-            <ImageDetail
-              imageSource={require('../../images/mountain.jpg')}
-              title="Alien Abduction"
-              score={0.5}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.touchme}>
-            <ImageDetail
-              imageSource={require('../../images/beach.jpg')}
-              title="De ja vu"
-              score={10}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.touchme}>
-            <ImageDetail
-              imageSource={require('../../images/cocky.jpg')}
-              title="Cocky"
-              score={69}
-            />
-          </TouchableOpacity>
+          <View style={styles.container}>
+            <TouchableOpacity style={styles.touchme}>
+              <ImageDetail
+                imageSource={require('../../images/beach.jpg')}
+                title="Beach"
+                score={9}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.touchme}>
+              <ImageDetail
+                imageSource={require('../../images/forest.jpg')}
+                title="Prying Jungles"
+                score={7}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.touchme}>
+              <ImageDetail
+                imageSource={require('../../images/mountain.jpg')}
+                title="Alien Abduction"
+                score={0.5}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.touchme}>
+              <ImageDetail
+                imageSource={require('../../images/beach.jpg')}
+                title="De ja vu"
+                score={10}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.touchme}>
+              <ImageDetail
+                imageSource={require('../../images/cocky.jpg')}
+                title="Cocky"
+                score={69}
+              />
+            </TouchableOpacity>
+          </View>
           <View style={{paddingTop: 50, height: 200}} />
         </SafeAreaView>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 10,
     backgroundColor: 'rgb(55,55,55)',
+    width: 395,
+    alignSelf: 'center',
+  },
+  backgroundimg: {
+    flex: 1,
+    width: null,
+    height: null,
   },
   titlestyle: {
     textAlign: 'center',

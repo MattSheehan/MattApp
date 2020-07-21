@@ -4,16 +4,19 @@ import HomeScreen from '../screens/HomeScreen';
 import HomeList from '../screens/HomeList';
 import ImageScreen from '../screens/ImageScreen';
 import ColorScreen from '../screens/ColorScreen';
+import ProfileScreen from '../screens/settings/Profile';
+import SettingsScreen from '../screens/settings/Settings';
+import LoginScreen from '../screens/Login';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="Login"
       drawerType="slide"
       edgeWidth={0}
-      drawerStyle={{backgroundColor: 'rgb(55, 55, 55)'}}
+      drawerStyle={{backgroundColor: 'rgb(30, 30, 40)'}}
       drawerContentOptions={{
         activeTintColor: 'dodgerblue',
         inactiveTintColor: 'rgb(245,245,245)',
@@ -37,6 +40,21 @@ const DrawerNav = () => {
         name="ColorScreen"
         component={ColorScreen}
         options={{title: 'Color Selector 1313'}}
+      />
+      <Drawer.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{title: 'Log Out'}}
+      />
+      <Drawer.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{title: 'Settings'}}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{title: 'Profile'}}
       />
     </Drawer.Navigator>
   );

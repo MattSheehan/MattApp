@@ -73,9 +73,21 @@ const ImageScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 10,
-    backgroundColor: 'rgb(55,55,55)',
-    width: 395,
+    padding: 10,
+    borderTopLeftRadius: 7.5,
+    borderTopRightRadius: 7.5,
+    borderBottomLeftRadius: 7.5,
+    borderBottomRightRadius: 7.5,
+    shadowColor: 'rgb(255,255,255)',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    elevation: 5,
+    width: 390,
+    backgroundColor: 'rgb(119,136,153)',
     alignSelf: 'center',
   },
   backgroundimg: {
@@ -105,7 +117,7 @@ export default function() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: 'rgb(25,25,25)',
+          backgroundColor: 'rgb(30, 30, 40)',
         },
         headerTintColor: 'rgb(135, 255, 185)',
         headerTitleStyle: {

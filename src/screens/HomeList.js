@@ -22,7 +22,10 @@ const HomeList = ({navigation}) => {
   const driverNames = [
     {name: 'Sheehan', note: 'nothing bad to say at all what a normal dude...'},
     {name: 'Krista', note: 'if you see(hear) her dog run.'},
-    {name: 'Zaddy', note: 'likes to drive fast and eat ass.'},
+    {
+      name: 'Zaddy',
+      note: 'Rumor has it his real name is Ethan. Dont believe it',
+    },
     {name: 'Ketcham', note: 'be cautious, he is on the council of Matts.'},
     {name: 'Grant', note: 'thinks he is good at fishing.'},
     {name: 'Andrew', note: 'without a doubt the worst programmer'},
@@ -80,13 +83,22 @@ const styles = StyleSheet.create({
     height: null,
   },
   listcontainer: {
-    borderColor: 'rgb(25,105,205)',
-    borderStyle: 'solid',
-    borderWidth: 2,
+    padding: 10,
+    borderTopLeftRadius: 7.5,
+    borderTopRightRadius: 7.5,
+    borderBottomLeftRadius: 7.5,
+    borderBottomRightRadius: 7.5,
+    shadowColor: 'rgb(255,255,255)',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
     width: 350,
-    height: 400,
+    backgroundColor: 'rgb(119,136,153)',
     alignSelf: 'center',
-    backgroundColor: 'rgb(55,55,55)',
   },
   titlecontainer: {
     paddingTop: 5,
@@ -107,8 +119,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const Something = () => <Text>Something</Text>;
-
 const Stack = createStackNavigator();
 
 export default function() {
@@ -116,7 +126,7 @@ export default function() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: 'rgb(25,25,25)',
+          backgroundColor: 'rgb(30, 30, 40)',
         },
         headerTintColor: 'rgb(125, 245, 180)',
         headerTitleStyle: {
@@ -125,7 +135,6 @@ export default function() {
         },
       }}>
       <Stack.Screen name="HomeList" component={HomeList} />
-      <Stack.Screen name="Something" component={Something} />
     </Stack.Navigator>
   );
 }

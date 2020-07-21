@@ -10,39 +10,36 @@ import React, {useReducer} from 'react';
 import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import ColorGen from '../components/ColorGen';
 
-const COLOR_FACTOR = 5;
+const PAYLOAD_CONST = 5;
+const MAX = 255;
+const MIN = 0;
 
-// REDUCER VERSION
 const reducer = (state, action) => {
   // state === { red: number, green: number, blue: number }
-  // action === { colorTBD: (red || green || blue), amount: COLOR_FACTOR || -1*COLOR_FACTOR }
-  switch (action.colorTBD) {
-    case 'red':
-      return state.red + action.amount > 255 || state.red + action.amount < 0
+  // action === { type: (change_red || change_green || change_blue), payload: PAYLOAD_CONST || -PAYLOAD_CONST }
+
+  switch (action.type) {
+    case 'change_red':
+      return state.red + action.payload > MAX ||
+        state.red + action.payload < MIN
         ? state // return previous state NO update
-        : {...state, red: state.red + action.amount};
-    case 'green':
-      return state.green + action.amount > 255 ||
-        state.green + action.amount < 0
+        : {...state, red: state.red + action.payload};
+    case 'change_green':
+      return state.green + action.payload > MAX ||
+        state.green + action.payload < MIN
         ? state // return previous state NO update
-        : {...state, green: state.green + action.amount};
-    case 'blue':
-      return state.blue + action.amount > 255 || state.blue + action.amount < 0
+        : {...state, green: state.green + action.payload};
+    case 'change_blue':
+      return state.blue + action.payload > MAX ||
+        state.blue + action.payload < MIN
         ? state // return previous state NO update
-        : {...state, blue: state.blue + action.amount};
+        : {...state, blue: state.blue + action.payload};
     default:
       return state;
   }
 };
 
 const ColorReducer = () => {
-  /*
-  navigation.setOptions({
-    title: 'Wheel of Colorrrr',
-    headerLeft: () => <DrawerIcon navigation={navigation} />,
-    headerRight: () => <HomeIcon navigation={navigation} />,
-  });
-  */
   const [state, runColorReducer] = useReducer(reducer, {
     red: 0,
     green: 0,
@@ -57,30 +54,30 @@ const ColorReducer = () => {
       <Text style={styles.Redtitle}>Red</Text>
       <ColorGen
         onIncrease={() =>
-          runColorReducer({colorTBD: 'red', amount: COLOR_FACTOR})
+          runColorReducer({type: 'change_red', payload: PAYLOAD_CONST})
         }
         onDecrease={() =>
-          runColorReducer({colorTBD: 'red', amount: -1 * COLOR_FACTOR})
+          runColorReducer({type: 'change_red', payload: -1 * PAYLOAD_CONST})
         }
         color="Red"
       />
       <Text style={styles.Greentitle}>Green</Text>
       <ColorGen
         onIncrease={() =>
-          runColorReducer({colorTBD: 'green', amount: COLOR_FACTOR})
+          runColorReducer({type: 'change_green', payload: PAYLOAD_CONST})
         }
         onDecrease={() =>
-          runColorReducer({colorTBD: 'green', amount: -1 * COLOR_FACTOR})
+          runColorReducer({type: 'change_green', payload: -1 * PAYLOAD_CONST})
         }
         color="Green"
       />
       <Text style={styles.Bluetitle}>Blue</Text>
       <ColorGen
         onIncrease={() =>
-          runColorReducer({colorTBD: 'blue', amount: COLOR_FACTOR})
+          runColorReducer({type: 'change_blue', payload: PAYLOAD_CONST})
         }
         onDecrease={() =>
-          runColorReducer({colorTBD: 'blue', amount: -1 * COLOR_FACTOR})
+          runColorReducer({type: 'change_blue', payload: -1 * PAYLOAD_CONST})
         }
         color="Blue"
       />
@@ -108,12 +105,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopLeftRadius: 7.5,
     borderTopRightRadius: 7.5,
+    borderBottomLeftRadius: 7.5,
+    borderBottomRightRadius: 7.5,
     shadowColor: 'rgb(255,255,255)',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.2,
+    shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 5,
     width: 350,
@@ -160,28 +159,3 @@ const styles = StyleSheet.create({
 });
 
 export default ColorReducer;
-/*
-const Stack = createStackNavigator();
-
-export default function() {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: 'rgb(25, 25, 25)',
-        },
-        headerTintColor: 'rgb(125, 255, 185)',
-        headerTitleStyle: {
-          fontSize: 25,
-          fontWeight: 'bold',
-        },
-      }}>
-      <Stack.Screen
-        name="ColorReducer"
-        component={ColorReducer}
-        title="Color Selector 1313"
-      />
-    </Stack.Navigator>
-  );
-}
-*/

@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SettingsStackScreen from './SettingsNav';
@@ -24,8 +25,8 @@ export default () => {
       tabBarOptions={{
         activeTintColor: 'rgb(135, 255, 165)',
         inactiveTintColor: 'rgb(205, 205, 205)',
-        activeBackgroundColor: 'rgb(25, 25, 25)',
-        inactiveBackgroundColor: 'rgb(25, 25, 25)',
+        activeBackgroundColor: 'rgb(30, 30, 40)',
+        inactiveBackgroundColor: 'rgb(30, 30, 40)',
         safeAreaInsets: {flex: 1, bottom: 0, top: 0},
       }}>
       <Tab.Screen name="Home" component={DrawerNav} />
@@ -33,3 +34,4 @@ export default () => {
     </Tab.Navigator>
   );
 };
+*/

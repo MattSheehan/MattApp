@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text,
   View,
   ScrollView,
   StyleSheet,
@@ -10,6 +9,7 @@ import {
 import DrawerIcon from '../components/DrawerIcon';
 import {createStackNavigator} from '@react-navigation/stack';
 import CountingGame from '../components/CountingGame';
+import CountReducer from '../components/CountReducer';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const HomeScreen = ({navigation, route}) => {
@@ -30,6 +30,8 @@ const HomeScreen = ({navigation, route}) => {
       <ScrollView>
         <SafeAreaView>
           <CountingGame />
+          <View style={{padding: 50}} />
+          <CountReducer />
         </SafeAreaView>
       </ScrollView>
     </ImageBackground>
@@ -64,7 +66,7 @@ export default function() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: 'rgb(25, 25, 25)',
+          backgroundColor: 'rgb(30, 30, 40)',
         },
         headerTintColor: 'rgb(125, 255, 185)',
         headerTitleStyle: {
